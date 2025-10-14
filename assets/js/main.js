@@ -4,7 +4,16 @@
  * @returns {boolean}
  */
 function isEven(number) {
+    let numberIsEven = false;
+    const result = number % 2;
 
+    if (!result) {
+        numberIsEven = true;
+    }
+
+    return numberIsEven;
+
+    // number % 2 === 0
 }
 
 /**
@@ -14,6 +23,13 @@ function isEven(number) {
  */
 function getLength(text) {
 
+    let charLong = 0;
+
+    for (let i = 0; i < text.length; i++) {
+        charLong++;
+    }
+
+    return charLong;
 }
 
 /**
@@ -22,7 +38,23 @@ function getLength(text) {
  * @returns {string}
  */
 function capitalize(word) {
+    const characters = 'ABCDEFGHIJKLMNÑOPQRSTUVWXYZ';
+    let capitatFirstChar = 'Argument void';
 
+    if (word === undefined) {
+        return capitatFirstChar;
+    }
+
+    for (let i = 0; i < characters.length; i++) {
+        const char = characters[i];
+    
+        if (char === word[0].toUpperCase()) {
+            capitatFirstChar = char;
+            break;
+        }
+    }
+
+    return capitatFirstChar + word.slice(1);
 }
 
 /**
@@ -31,7 +63,19 @@ function capitalize(word) {
  * @returns {number}
  */
 function countEvens(numbers) {
+    let countEven = 0;
 
+    for (let i = 0; i < numbers.length; i++) {
+        const number = numbers[i];
+
+        if (number % 2 === 0) {
+            countEven++;
+        }
+    }
+
+    return countEven;
+
+    // LLamar a la función resuelta
 }
 
 
@@ -42,7 +86,13 @@ function countEvens(numbers) {
  * @returns {string}
  */
 function repeat(word, times) {
+    let repeatWord = word;
 
+    for (let i = 1; i < times; i++) {
+        repeatWord += ' ' + word;       
+    }
+
+    return repeatWord;
 }
 
 /**
@@ -51,7 +101,14 @@ function repeat(word, times) {
  * @returns {string}
  */
 function reverse(text) {
+    let stringNew = '';
 
+    for (let i = text.length - 1; i >= 0; i--) {
+        const element = text[i];
+        stringNew += element;
+    }
+
+    return stringNew;
 }
 
 /**
@@ -61,7 +118,16 @@ function reverse(text) {
  * @returns {boolean}
  */
 function includes(elements, element) {
+    
+    for (let i = 0; i < elements.length; i++) {
+        const word = elements[i];
+        
+        if (word === element) {
+            return true
+        }
+    }
 
+    return false
 }
 
 /**
@@ -71,7 +137,17 @@ function includes(elements, element) {
  * @returns {string[]} - Array of words longer than minLength.
  */
 function getWordsLongerThan(words, minLength) {
+    let listWords = [];
 
+    for (let i = 0; i < words.length; i++) {
+        const element = words[i];
+
+        if (element.length >= minLength) {
+            listWords.push(element);
+        }
+    }
+
+    return listWords;
 }
 
 /**
@@ -81,7 +157,17 @@ function getWordsLongerThan(words, minLength) {
  * @returns {number[]}
  */
 function filterGreaterThan(numbers, minValue) {
+    let numberGreater = [];
 
+    for (let i = 0; i < numbers.length; i++) {
+        const element = numbers[i];
+
+        if (element > minValue) {
+            numberGreater.push(element);
+        }        
+    }
+
+    return numberGreater;
 }
 
 /**
@@ -90,7 +176,17 @@ function filterGreaterThan(numbers, minValue) {
  * @returns {string}
  */
 function cleanDuplicateSpaces(text) {
+    let stringClean = '';
 
+    for (let i = 0; i < text.length; i++) {
+        const element = text[i];
+
+        if (element !== ' ') {
+            stringClean += element; 
+        }
+    }
+
+    return stringClean;
 }
 
 /**
@@ -100,5 +196,32 @@ function cleanDuplicateSpaces(text) {
  * @returns {string}
  */
 function joinWith(words, separator) {
+    let arraySeparator;
 
+    for (let i = 0; i < words.length; i++) {
+        const element = words[i];
+
+        if (arraySeparator === undefined) {
+            arraySeparator = element;
+        }
+
+        arraySeparator += separator;
+        arraySeparator += element;
+    }
+
+    return arraySeparator;
 }
+
+console.log('Is Even:', isEven(5));
+console.log('Char Length', getLength('Raf'));
+console.log('Capitalize:', capitalize('casamiento'));
+console.log('Count Evens:', countEvens([2,4,1,5,6,8,7,13]));
+console.log('Repeat:', repeat('Carolina', 3));
+console.log('Reverse: ', reverse('el palmar'));
+const elements = ['costa', 'mar', 'playa', 'ola', 'sal'];
+console.log('Includes: ', includes(elements, 'playa'));
+console.log('Words Longer: ', getWordsLongerThan(elements, 4));
+const numbers = [3,5,23,7,6,1,9,8,2];
+console.log('Filter Greater: ', filterGreaterThan(numbers, 6));
+console.log('clean Duplicate Spaces: ', cleanDuplicateSpaces('    Anto n i o   '));
+console.log('join With: ', joinWith(elements, '|'));
